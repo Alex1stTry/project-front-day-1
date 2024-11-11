@@ -1,0 +1,12 @@
+.Header{
+    background-color: blue;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button{
+    height: 50px;
+    font-size: 24px;
+    width: 200px;
+}
