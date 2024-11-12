@@ -1,12 +1,26 @@
-import {createBrowserRouter} from "react-router-dom";
+import {createBrowserRouter, Navigate} from "react-router-dom";
+import React from "react";
+
 import {MainLayout} from "./layouts/mainLayout";
-import {RegisterPage} from "./pages/registerPage";
+import {AccountPage, AuthPage, RegisterPage} from "./pages";
+import {AuthRequired} from "./hoc/authRequired";
+
+
 
 const router = createBrowserRouter([
     {
-        path: '/', element: <MainLayout/>, children:[
+        path: '/', element: <MainLayout/>, children: [
             {
-                path:'auth/register', element:<RegisterPage/>
+                index:true,element: <Navigate to={'user'}/>
+            },
+            {
+                path: 'auth/register', element: <RegisterPage/>
+            },
+            {
+                path: 'auth/log-in', element: <AuthPage/>
+            },
+            {
+                path:'user',element:<AuthRequired><AccountPage/></AuthRequired>
             }
 
         ]

@@ -2,8 +2,10 @@ const baseURL ='http://localhost:4000'
 const auth = '/auth'
 
 const urls = {
-    register:{
-        base: `${auth}/register`
+    auth:{
+        register:`${auth}/register`,
+        login:`${auth}/log-in`,
+        me:`${auth}/me`
     }
 }
 

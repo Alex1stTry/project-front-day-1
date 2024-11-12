@@ -5,3 +5,7 @@ export interface IUser {
     password: string,
     avatar?: string
 }
+
+export interface IData {
+    data: IUser
+}

@@ -7,7 +7,10 @@ const Header = () => {
 
     return (
         <div className={css.Header}>
-           <button className={css.button} onClick={()=>nav('/auth/register')}>Register</button>
+            <div>
+                <button className={css.button} onClick={() => nav('/auth/register')}>Register</button>
+                <button className={css.button} onClick={() => nav('/auth/log-in')}>Login</button>
+            </div>
         </div>
     );
 };

@@ -2,11 +2,13 @@
     background-color: blue;
     height: 100px;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 .button{
-    height: 50px;
+    height: 40px;
     font-size: 24px;
-    width: 200px;
+    width: 120px;
+    margin-left: 20px;
+    gap: 20px;
+    border-radius: 15px;
 }

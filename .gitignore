@@ -23,5 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 
-.idea
 test-front.iml
+.idea
+public/robots.txt
+public/manifest.json
+

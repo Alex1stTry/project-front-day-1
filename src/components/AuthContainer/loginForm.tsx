@@ -1,25 +1,26 @@
-import {SubmitHandler, useForm} from "react-hook-form";
+import {useForm} from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {Box, Button, TextField} from "@mui/material";
-
-import {IUser} from "../../interfaces/user-interface";
-import {userValidator} from "../../validators/userValidator";
-import css from './registerForm.module.css'
 import {useNavigate} from "react-router-dom";
-import {authService} from "../../services/authService";
 
-const RegisterForm = () => {
-    const {register, formState: {isValid}, handleSubmit} = useForm<IUser>({
+import {authService} from "../../services/authService";
+import css from './registerForm.module.css'
+import {ILogIn} from "../../interfaces/log-in.interface";
+import {authValidator} from "../../validators/authValidator";
+
+const LoginForm = () => {
+    const {register, formState: {isValid}, handleSubmit} = useForm<ILogIn>({
         mode: 'all',
-        resolver: joiResolver(userValidator)
+        resolver: joiResolver(authValidator)
     });
-    const nav = useNavigate()
-    const save: SubmitHandler<IUser> = async (user: IUser) => {
+    const nav = useNavigate();
+
+    const save = async (auth: ILogIn) => {
         try {
-            await authService.register(user)
-            nav('/auth/log-in')
+            await authService.logIn(auth)
+            nav('/user')
         } catch (e) {
-            console.log(e)
+            console.log(e);
         }
     }
     return (
@@ -35,27 +36,22 @@ const RegisterForm = () => {
         >
             <div className={css.Form}>
                 <TextField
-                    label="Name"
+                    label="Email"
                     id="outlined-size-small"
                     size="small"
-                    {...register('name')}
+                    {...register('email')}
                 /> <TextField
-                label="Email"
-                id="outlined-size-small"
-                size="small"
-                {...register('email')}
-            /> <TextField
                 label="Password"
                 id="outlined-size-small"
                 size="small"
                 {...register('password')}
             />
-                <Button type={'submit'} disabled={!isValid} variant="contained">Register</Button>
+                <Button type={'submit'} disabled={!isValid} variant="contained">Login</Button>
             </div>
         </Box>
     );
 };
 
 export {
-    RegisterForm
+    LoginForm
 };
